@@ -18,8 +18,11 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'about.html'));
-});
+}); 
 
+app.get('/history', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'history.html'));
+});
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

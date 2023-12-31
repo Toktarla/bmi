@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const { LocalStorage } = require('node-localstorage');
+const localStorage = new LocalStorage('./scratch');
 
+
+let historicalData = JSON.parse(localStorage.getItem('historicalData')) || [];
+ 
 router.post('/bmi', (req, res) => {
-    const { height, weight, age, gender } = req.body;
+    const { name,height,weight, age, gender } = req.body;
 
     const heightInMeters = height / 100; 
     const bmi = weight / (heightInMeters * heightInMeters);
@@ -20,7 +25,8 @@ router.post('/bmi', (req, res) => {
             } else {
                 bmiCategory = 'Obese';
             }
-        } else if (gender === 'female') {
+        } 
+        else if (gender === 'female') {
             if (bmi < 18.5) {
                 bmiCategory = 'Underweight';
             } else if (bmi >= 18.5 && bmi < 23.9) {
@@ -31,7 +37,8 @@ router.post('/bmi', (req, res) => {
                 bmiCategory = 'Obese';
             }
         }
-    } else {
+    } 
+    else {
         if (gender === 'male') {
             if (bmi < 14) {
                 bmiCategory = 'Underweight';
@@ -55,7 +62,16 @@ router.post('/bmi', (req, res) => {
         }
     }
 
+    const timestamp = new Date().toISOString();
+    historicalData.push({ name, height, weight, age, gender, timestamp });
+    localStorage.setItem('historicalData', JSON.stringify(historicalData));
     res.json({ bmi, category: bmiCategory });
+
+});
+
+router.get('/history', (req, res) => {
+    const historicalData = JSON.parse(localStorage.getItem('historicalData')) || [];
+    res.json(historicalData);
 });
 
 module.exports = router;
