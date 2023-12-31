@@ -1,60 +1,27 @@
-# BMI Calculator Project
+# BMI Calculator Application
 
-This project is a simple web application that calculates Body Mass Index (BMI) with additional functionalities such as history tracking and different input units.
+## Installation
 
-## Routes and Structure
+To run this application locally, follow these steps:
+1. Clone this repository to your local machine.
+2. Ensure you have Node.js installed.
+3. Open a terminal in the project directory.
+4. Run `npm install` to install the necessary dependencies.
 
-- **Routes**: The routes for this project are defined in `route.js`, and the actual routes themselves are implemented in `routes/bmiRoutes.js`.
-- **Pages**: There are four main pages in this project:
-    - Home
-    - About
-    - History
-    - BMI Calculator
+## Running the Application
 
-## Features
+Once the installation is complete, you can start the application by running: npm start or with nodemon
 
-### BMI Calculator
+## Usage
+Access the application in your web browser by visiting http://localhost:3000.
 
-The BMI calculator includes:
-- Inputs for name, age, gender, weight, and height.
-- Supports units in cm, mm, m for height and g, kg for weight.
-
-### History
-
-The history feature was implemented through a button click. It uses the `POST` method and displays history via JSON format on an HTML Bootstrap modal.
-
-## Setup and Running
-
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/your-username/bmi-calculator.git
-    ```
-
-2. Navigate to the project directory:
-
-    ```bash
-    cd bmi-calculator
-    ```
-
-3. Install dependencies:
-
-    ```bash
-    npm install
-    ```
-
-4. Start the server:
-
-    ```bash
-    npm start
-    ```
-
-   By default, the server runs on port 3000.
+Fill in the required details in the form fields (Name, Height, Weight, Age, Gender, and Units).
+Click on the "Calculate BMI" button to get your BMI information.
 
 ## Dependencies
+This application uses the following main dependencies:
 
-- Express
-- Bootstrap
-- body-parser
-- jQuery (for DOM manipulation)
-
+Node.js: JavaScript runtime environment
+Express.js: Web application framework for Node.js
+Bootstrap: Front-end component library for UI design
+jQuery: JavaScript library for DOM manipulation 
